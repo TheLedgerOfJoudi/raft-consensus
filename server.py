@@ -56,7 +56,7 @@ class RaftServiceHandler(pb2_grpc.RaftServiceServicer):
     def GetLeader(self, request, context):
         msg = request.message
         i = leader_id
-        addr = nodes[id]
+        addr = nodes[str(i)]
         print_to_console("Command from client: getleader")
         print_to_console(str(id) + " " + nodes[str(i)])
         reply = {"id": i, "address": addr}
