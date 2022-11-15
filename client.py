@@ -18,10 +18,10 @@ if __name__ == "__main__":
                 stub = pb2_grpc.RaftServiceStub(channel)
             elif splits[0] == "getleader":
                 out = stub.GetLeader(pb2.GetLeaderMessage(message = "hi"))
-                print(out)
+                print(str(out.id) + " " + str(out.address))
             elif splits[0] == "suspend":
-                id = int(splits[1])
-                out = stub.Suspend(pb2.SuspendMessage(timeout=id))
+                period = int(splits[1])
+                out = stub.Suspend(pb2.SuspendMessage(timeout=period))
                 print(out)
             elif splits[0] == "quit":
                 print("The client ends")
